@@ -7,7 +7,7 @@
   <body>
 
     <script>
-
+ // h = 72 t = 84 d = 68 w = 87
       // VARIABLES
       // ==========================================================================
       var letter;
@@ -50,7 +50,10 @@
 
       // FUNCTIONS
       // ==============================================================================
-
+      window.addEventListener("keyup", function(event){
+       console.log(event.keyCode)
+       
+      });
       // TO DO: Log all of our car's current stats to the console.
       function reWriteStats() {
         
@@ -65,7 +68,26 @@
         // Prompt user to input a letter
         letter = prompt("Type 'h' to honk, 'd' to drive to work, 'w' to drive around the world, or 't' to get a tuneup.");
         
+        switch(letter){
+
+         case "h": 
+          car.honk();
+          break;
+         case "d": 
+          car.driveToWork();
+          break
+         case "w":
+          car.driveAroundWorld();
+          break
+         case "t":
+          car.getTuneUp();
+          break
+         default: 
+         alert("wrong letter selected");
+        }
+        
         // TO DO: Call the different car methods
+
       }
 
     </script>
