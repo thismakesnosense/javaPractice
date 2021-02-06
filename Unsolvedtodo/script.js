@@ -11,13 +11,39 @@ function addTodos(){
     // var count = Number(todoCountSpan.innerHTML);
     // wrapping in Number turns the todoCountSpan from a string to a Number
     for(let i=0;i < todos.length; i++){
-        initalListContent += `<li>${todos[i]}</li>`;
+        initalListContent += `<li id=${todos[i]}>${todos[i]}<button class="done">complete</button></li>`;
         // count += 1; 
         // count = count plus one can also use count++
     }
     todoList.innerHTML = initalListContent;
-    todoCountSpan.innerHTML = todos.length;
+    updateCount();
     todoInput.value = "";
+    addDeleteListners();
+};
+
+function addDeleteListners(){
+    //queryselectorall selects all instead of just the first one.
+ document.querySelectorAll(".done").forEach(button => {
+     button.addEventListener("click",(event) => {
+         event.preventDefault();
+        var ItemToDelete = event.target.parentNode.innerText;
+         todos.forEach((todo, index) => {
+             console.log(typeof todo, typeof ItemToDelete);
+         if (todo === ItemToDelete){
+             todos.splice(index, 1);
+            //  break;
+            console.log(todos);
+         }
+     
+         });
+         event.target.parentNode.remove();
+         updateCount();
+     })
+ })
+};
+
+function updateCount(){
+    todoCountSpan.innerHTML = todos.length;
 };
 
 function addToArray(){
