@@ -28,7 +28,7 @@ justify-content: center;
 }
 
 .hand{
-    width: 50%;
+   width: 50%;
     height: 5px;
     background-color: rgb(250, 250, 250);
     position:absolute;
@@ -38,3 +38,31 @@ justify-content: center;
     transition: all 0.05s;
 
 }
+
+/* .Hour{
+  width: 50%;
+  height: 5px;
+    background-color: rgb(15, 161, 10);
+    position:absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(100deg);
+    transition: all 0.05s;
+
+}
+
+.Minute{
+ 
+
+}
+
+.Second{
+  width: 50%;
+  height: 5px;
+  background-color: rgb(250, 250, 250);
+  position:absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s;
+} */
