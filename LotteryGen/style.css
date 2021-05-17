@@ -5,3 +5,11 @@ h1{
 h2{
     color: aqua;
 }
+
+.wow{
+    border: 2px solid red;
+    background-color: blue;
+    height: auto;
+    text-align: center;
+    font-size: 50px;
+}
