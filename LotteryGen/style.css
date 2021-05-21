@@ -1,9 +1,31 @@
 h1{
     color:  red;
+    text-align: center;
+    text-shadow: rgb(10, 10, 121),;
 }
 
 h2{
-    color: aqua;
+    color: rgb(48, 114, 114);
+    text-align: center;
+    text-shadow: rgb(100, 6, 6);
+    
+}
+
+
+
+footer{
+    clear: both;
+    font-size: 12px;
+    color: #ffffff;
+    color: #cccccc;
+    text-align: center;
+    background: #110b05fd;
+    border-top: 8px solid hsla(327, 65%, 32%, 0.425);
+    
+    width: 100%;
+    padding-top: 10px;
+    margin-top: -100px;
+    
 }
 
 .wow{
@@ -12,4 +34,24 @@ h2{
     height: auto;
     text-align: center;
     font-size: 50px;
+}
+
+form{
+    padding-top: 20px;
+}
+
+.play-form:hover{
+    background-color: rgba(58, 211, 58, 0.877);
+    
+}
+
+html, body{
+    height: 100%;
+    
+}
+
+.container{
+    min-height: 100%;
+    
+    
 }
