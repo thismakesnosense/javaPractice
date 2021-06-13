@@ -3,7 +3,8 @@ const userNum = document.querySelector(".user-num");
 const userInputChoice = document.querySelector(".user-choice");
 const lightShow = document.querySelector(".wow");
 const Prize = document.querySelector(".prize");
-const PlayAgain = document.querySelector("#play-again");
+
+const PlayBtn = document.querySelector(".play-form");
 
 const clear = () => {
 winningNum.innerText = "";
@@ -11,13 +12,17 @@ userNum.innerText = "";
 Prize.innerText = "";
 };
 
-const startGame = () => {
-    clear();
-    const winNum = generateWinningNumber();
-    console.log(winNum);
+
+   
     document.querySelector(".play-form").addEventListener("click", (event) => {
         event.preventDefault();
+        clear();
+    
+        const winNum = generateWinningNumber();
+        
+        console.log(winNum);
         const userChoice = userInputChoice.value;
+        
         if (userChoice.length !== 4) {
             console.log(userChoice);
             alert("Please enter a four digit number.")
@@ -34,18 +39,17 @@ const startGame = () => {
         console.log(userChoice);
 
         splitPrize(userChoice, winNum);
-        PlayAgain.classList.toggle("hidden");
+        
+        userInputChoice.value = "";
+        PlayBtn.innerText = "Play Again";
     })
-};
 
-document.body.onload = () => {
-   startGame();
-};
 
-PlayAgain.addEventListener("click", () => {
-    PlayAgain.classList.toggle("hidden");
-    startGame();
-});
+// document.body.onload = () => {
+//    startGame();
+// };
+
+
 
 function checkGrandPrize(user, winner) {
 
@@ -61,10 +65,23 @@ function splitPrize(user, winner) {
         if (strWinner.includes(char)) {
             counter += 1;
             console.log("yay")
+
         };
 
 
     };
+    if (counter === 4){
+        Prize.innerText = "You Won the Silver Prize"
+    }
+    else if (counter === 3){
+        Prize.innerText = "You Won the Bronze Prize"
+    }
+    else if(counter === 2){
+        Prize.innerText = "You Won the Copper Prize"
+    }
+    else{
+        Prize.innerText = "So close"
+    }
     return counter
 };
 //this is where we are, maybe a way to let them play again without reloading page.
