@@ -11,9 +11,35 @@
 <body>
     <header>
         <h1>5 Day Weather</h1>
-        <input type="text" placeholder="search your area" class="search-tap">
-        <button class="search-btn"><i class="fas fa-search-plus"></i></button>
+        
     </header>
-    
+    <div class="container">
+        <div class="top-sections">
+     <section class="history">
+         <div class="history-search">
+            <input type="text" placeholder="search your area" class="search-tap">
+            <button class="search-btn"><i class="fas fa-search-plus"></i></button>
+         </div>
+         <div class="history-details">
+             <h2>History</h2>
+             <ul class="history-list"></ul>
+         </div>
+        
+     </section>
+     <section class="current">
+         <h2 class="current-h2"></h2>
+         <div class="current-details"></div>
+     </section>
+         </div>
+     <section class="five-day">
+         <h2 class="five-day-h2">Five Day Forecast</h2>
+         <div class="five-day-cards"></div>
+     </section>
+     
+     
+
+    </div>
+    <footer>
+    </footer>
 </body>
 </html>
