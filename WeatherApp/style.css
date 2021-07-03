@@ -21,19 +21,25 @@ header {
 }
 
 .container {
-   margin: 0px 10px;
+   align-items: center;
    display: flex;
-   flex-direction: column;
+   justify-content: center;
    background-image: url("https://images.unsplash.com/photo-1534629938736-b1b076531d3b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80");
    background-size: cover;
    background-repeat: no-repeat;
+   
    width: 100%;
+}
+
+.content-container{
+width: 80%;
 }
 
 .top-sections {
     display: flex;
     flex-direction: column;
     height: 500px;
+
 }
 
 section {
@@ -43,19 +49,61 @@ section {
 .history {
     
     height: 40%;
-    /* background-color: hotpink; */
+    background-color: rgb(177, 177, 177);
 }
 
 .current {
     height: 60%;
-    /* background-color: lawngreen; */
+    background-color: lawngreen;
 }
 
 .five-day {
     height: 500px;
-    
+    width: 100%;
 }
 
+.five-day-cards{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+.card{
+    width: 100%;
+    height: 300px;
+    background-color: burlywood;
+    margin: 5px;
+
+}
+/* media query */
+@media screen and (min-width:600px) {
+    .top-sections{
+        flex-direction: row;
+        
+    }
+    .history {
+        width: 35%;
+
+    }
+
+    .current{
+        width: 65%;
+    }
+
+    .card{
+        width: 200px;
+        height: 250px;
+    }
+
+    .five-day-cards{
+
+        flex-wrap: nowrap;
+    }
+
+    .content-container{
+        min-width: 1200px;
+    }
+}
 
 
 

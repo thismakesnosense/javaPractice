@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5 Day Weather</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>5 Day Weather</h1>
-        
+
     </header>
     <div class="container">
-        <div class="top-sections">
-     <section class="history">
-         <div class="history-search">
-            <input type="text" placeholder="search your area" class="search-tap">
-            <button class="search-btn"><i class="fas fa-search-plus"></i></button>
-         </div>
-         <div class="history-details">
-             <h2>History</h2>
-             <ul class="history-list"></ul>
-         </div>
-        
-     </section>
-     <section class="current">
-         <h2 class="current-h2"></h2>
-         <div class="current-details"></div>
-     </section>
-         </div>
-     <section class="five-day">
-         <h2 class="five-day-h2">Five Day Forecast</h2>
-         <div class="five-day-cards"></div>
-     </section>
-     
-     
+        <div class="content-container">
+            <div class="top-sections">
+                <section class="history">
+                    <div class="history-search">
+                        <input type="text" placeholder="search your area" class="search-tap">
+                        <button class="search-btn"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                    <div class="history-details">
+                        <h2>History</h2>
+                        <ul class="history-list"></ul>
+                    </div>
 
+                </section>
+                <section class="current">
+                    <h2 class="current-h2"></h2>
+                    <div class="current-details"></div>
+                </section>
+            </div>
+            <section class="five-day">
+                <h2 class="five-day-h2">Five Day Forecast</h2>
+                <div class="five-day-cards">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
+            </section>
+
+
+        </div>
     </div>
     <footer>
     </footer>
+    <script src="./script.js"></script>
 </body>
+
 </html>
