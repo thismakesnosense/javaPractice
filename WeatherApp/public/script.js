@@ -1,9 +1,60 @@
 // global var 
 const searchInput = document.querySelector(".search-tap");
 const searchBtn = document.querySelector(".search-btn");
-
+const fiveDayDiv = document.querySelector(".five-day-cards");
 
 // helper functions
+
+const SaveToStorage = (city) => {
+const citysFromStroage = localStorage.getItem("citys"); 
+if (!citysFromStroage){
+    let citysArray = [city];
+    localStorage.setItem("citys", JSON.stringify(citysArray));
+}   
+else {
+    let citysArray = JSON.parse(citysFromStroage);
+    citysArray.push(city);
+    localStorage.setItem("citys", JSON.stringify(citysArray));
+}
+}
+
+const getDay = (date) => {
+    let newDate = new Date(date);
+    switch (newDate.getDay()){
+        case 0: 
+         return "Sunday";
+        case 1: 
+         return "Monday";
+        case 2: 
+         return "Tuesday";
+        case 3: 
+         return "Wednesday";
+        case 4: 
+         return "Thursday";
+        case 5: 
+         return "Friday";
+        case 6: 
+         return "Saturday";
+        default:
+            return "error";
+    }
+};
+
+const renderFiveDay = (data) => {
+ for (let i = 0; i < data.length; i++){
+   const card = document.createElement("div");
+   card.classList.add("card");
+   card.innerHTML = `<h1>${getDay(data[i].date)}</h1>
+   <img src=${data[i].icon} alt="">
+<div>
+  <p>Temperature: ${data[i].temp}</p>
+  <p>Precipitation: ${data[i].precipitation}</p>
+  <p>Wind Speed: ${data[i].wind}</p>
+</div>`;
+   fiveDayDiv.appendChild(card);
+
+ }
+}
 
 const fetchFiveDay = () => {
     fetch('/fiveday', {
@@ -18,26 +69,10 @@ const fetchFiveDay = () => {
     .then(res => res.json())
     .then(data => {
         console.log(data);
+        renderFiveDay(data);
     })
 }
 
-//this formatting was moved to server.js
-// const formatData = (weatherArray) => {
-// const results = [];
-// for (let i = 4; i < weatherArray.length; i+=8){
-//     const current = weatherArray[i];
-//     const weatherOBJ = {
-//         temp: current.main.temp,
-//         precipitation: current.weather[0].description,
-//         icon: `http://openweathermap.org/img/w/${current.weather[0].icon}.png`,
-//         date: new Date(current.dt*1000),
-//         wind: current.wind.speed,
-//     }
-//     results.push(weatherOBJ);
-// }
-// console.log(results);
-// return results;
-// }; 
 
 const renderTodayWeather = (weatherOBJ) => {
 const h2 = document.querySelector(".current-h2");
@@ -83,6 +118,7 @@ const submitSearch = () => {
 // fetchFiveDay();
 fetchTodayWeather();
 fetchFiveDay();
+SaveToStorage(searchInput.value);
 };
 
 // event listners
