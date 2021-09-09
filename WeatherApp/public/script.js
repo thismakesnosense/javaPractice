@@ -2,7 +2,7 @@
 const searchInput = document.querySelector(".search-tap");
 const searchBtn = document.querySelector(".search-btn");
 const fiveDayDiv = document.querySelector(".five-day-cards");
-
+const historyList = document.querySelector(".history-list");
 // helper functions
 
 const SaveToStorage = (city) => {
@@ -13,8 +13,12 @@ if (!citysFromStroage){
 }   
 else {
     let citysArray = JSON.parse(citysFromStroage);
-    citysArray.push(city);
-    localStorage.setItem("citys", JSON.stringify(citysArray));
+    if (!citysArray.includes(city)){
+        citysArray.push(city);
+        localStorage.setItem("citys", JSON.stringify(citysArray));
+    };
+   
+    
 }
 }
 
@@ -56,14 +60,14 @@ const renderFiveDay = (data) => {
  }
 }
 
-const fetchFiveDay = () => {
+const fetchFiveDay = (city) => {
     fetch('/fiveday', {
         method:"POST",
         headers:{
             "Content-Type": "application/json"
         },
         body:JSON.stringify({
-            city: searchInput.value
+            city
         })
     })
     .then(res => res.json())
@@ -71,7 +75,7 @@ const fetchFiveDay = () => {
         console.log(data);
         renderFiveDay(data);
     })
-}
+};
 
 
 const renderTodayWeather = (weatherOBJ) => {
@@ -91,7 +95,7 @@ details.innerHTML = htmlString;
 const h2 = document.querySelector(".current-h2");
 console.log(h2, "test h2");
 
-const fetchTodayWeather = () => {
+const fetchTodayWeather = (city) => {
     
     fetch('/search', {
         method:"POST",
@@ -99,7 +103,7 @@ const fetchTodayWeather = () => {
             "Content-Type": "application/json"
         },
         body:JSON.stringify({
-            city: searchInput.value
+            city
         })
     })
     .then(res => res.json())
@@ -116,12 +120,33 @@ const fetchTodayWeather = () => {
 
 const submitSearch = () => {
 // fetchFiveDay();
-fetchTodayWeather();
-fetchFiveDay();
+fetchTodayWeather(searchInput.value);
+fetchFiveDay(searchInput.value);
 SaveToStorage(searchInput.value);
 };
+
+const renderSearchHistory = () => {
+    const localCitys = JSON.parse(localStorage.getItem("citys"));
+    if (localCitys) {
+      for (let i=0; i<localCitys.length; i++){
+          const li = document.createElement("li");
+          
+      }
+    }
+
+};
+
 
 // event listners
 
 searchBtn.addEventListener("click", submitSearch);
+document.addEventListener("DOMContentLoaded", () => {
+
+    const localCity = JSON.parse(localStorage.getItem("citys"));
+
+    const cityToSearch = localCity ? localCity[localCity.length-1]:"Washington D.C.";
+   // To get the final index in array length-1 since 10 items but array counts 0-9
+   fetchFiveDay(cityToSearch);
+   fetchTodayWeather(cityToSearch);
+});
 
