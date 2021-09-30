@@ -123,18 +123,31 @@ const submitSearch = () => {
 fetchTodayWeather(searchInput.value);
 fetchFiveDay(searchInput.value);
 SaveToStorage(searchInput.value);
+renderSearchHistory();
 };
 
 const renderSearchHistory = () => {
+    historyList.innerHTML = "";
+    const citysFromStroage = localStorage.getItem("citys");
+    if (!citysFromStroage) {
+        return
+    };
     const localCitys = JSON.parse(localStorage.getItem("citys"));
-    if (localCitys) {
-      for (let i=0; i<localCitys.length; i++){
+    const length = localCitys.length;
+    const end = length<= 5 ? 0: length-5;
+    console.log(length, end);
+      for (let i=localCitys.length-1; i>=end; i--){
+          console.log(i);
           const li = document.createElement("li");
-          
+          li.innerText = (localCitys[i]);
+          historyList.appendChild(li);
       }
-    }
+    
 
 };
+
+renderSearchHistory();
+
 
 
 // event listners
