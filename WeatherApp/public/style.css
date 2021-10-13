@@ -52,6 +52,10 @@ section {
     
 }
 
+.history-search {
+    margin: 0 0 15px 0;
+}
+
 .current {
     height: 200px;
     
@@ -84,7 +88,7 @@ li {
     
 }
 
-.current,.history {
+.current,.history,.current-details {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,8 +98,10 @@ li {
 p {
     font-size: 18px;
 }
+
+
 /* media query */
-@media screen and (min-width:600px) {
+@media screen and (min-width:800px) {
     .top-sections{
         flex-direction: row;
         
